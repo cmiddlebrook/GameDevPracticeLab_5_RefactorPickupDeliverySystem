@@ -1,74 +1,80 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerPickup : MonoBehaviour {
-
-
-    public Transform hold;
-    public Transform carry;
-    public Transform canObj; public Transform ui;
-    public BoxCollider col;
-
-    public TextMeshProUGUI bxDeliverui;
+public class PlayerPickup : MonoBehaviour
+{
 
 
-    private void Update() {
-        canObj = null;
+    [SerializeField] private Transform _carriedObjectPosition;
+    [SerializeField] private Transform _carriedObject;
+    [SerializeField] private Transform _interactionTarget;
+    [SerializeField] private Transform _interactionUI;
+    [SerializeField] private BoxCollider _deliveryAreaCollider;
+    [SerializeField] private TextMeshProUGUI _boxesDeliveredText;
+    [SerializeField] private Transform _boxesDeliveredPopup;
+    public int nrBoxesDelivered;
 
-        ui.gameObject.SetActive(false);
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit r, 3f)) {
-            if (r.collider.name == "cardboard_box_01_2k" ||
-                r.collider.name == "cardboard_box_01_2k (1)" ||
-                r.collider.name == "cardboard_box_01_2k (2)" ||
-                r.collider.name == "CardboardBox" ||
-                r.collider.name == "CardboardBox (1)" ||
-                r.collider.name == "CardboardBox (2)") {
+    private void Update()
+    {
+        _interactionTarget = null;
+
+        _interactionUI.gameObject.SetActive(false);
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit raycastHit, 3f))
+        {
+            if (raycastHit.collider.gameObject.TryGetComponent(out Box box))
+            {
                 // It's a delivery box
-                canObj = r.transform;
-                ui.gameObject.SetActive(true);
+                _interactionTarget = raycastHit.transform;
+                _interactionUI.gameObject.SetActive(true);
+
             }
+
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) {
-            if (carry == null) {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (_carriedObject == null)
+            {
                 // Not carrying anything, pick up
-                if (canObj != null) {
-                    canObj.GetComponent<Rigidbody>().isKinematic = true;
-                    canObj.parent = hold;
-                    canObj.localPosition = Vector3.zero;
-                    carry = canObj;
+                if (_interactionTarget != null)
+                {
+                    _interactionTarget.GetComponent<Rigidbody>().isKinematic = true;
+                    _interactionTarget.parent = _carriedObjectPosition;
+                    _interactionTarget.localPosition = Vector3.zero;
+                    _carriedObject = _interactionTarget;
                 }
-            } else {
+            }
+            else
+            {
                 // Carrying something, drop it
-                carry.GetComponent<Rigidbody>().isKinematic = false;
-                carry.parent = null;
-                carry = null;
+                _carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+                _carriedObject.parent = null;
+                _carriedObject = null;
 
-                Collider[] arr = 
-                    Physics.OverlapBox(col.transform.position + col.center, col.size * .5f);
-                int previousBoxesDelivered = boxes;
-                boxes = 0;
-                foreach (Collider c in arr) {
-                    if (c.CompareTag("Box")) {
-                        boxes++;
+                Collider[] colliders =
+                    Physics.OverlapBox(_deliveryAreaCollider.transform.position + _deliveryAreaCollider.center, _deliveryAreaCollider.size * .5f);
+                int previousBoxesDelivered = nrBoxesDelivered;
+                nrBoxesDelivered = 0;
+                foreach (Collider c in colliders)
+                {
+                    if (c.CompareTag("Box"))
+                    {
+                        nrBoxesDelivered++;
                     }
                 }
 
-                if (previousBoxesDelivered != boxes) {
+                if (previousBoxesDelivered != nrBoxesDelivered)
+                {
                     Instantiate(
-                        pop, 
-                        transform.position + transform.forward * 2f, 
+                        _boxesDeliveredPopup,
+                        transform.position + transform.forward * 2f,
                         Quaternion.identity);
                 }
 
-                bxDeliverui.text = "Boxes Delivered: " + boxes;
+                _boxesDeliveredText.text = "Boxes Delivered: " + nrBoxesDelivered;
             }
         }
     }
 
-    public int boxes;
-    public Transform pop;
 
 }

@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : MonoBehaviour {
+public class PlayerCharacterController : MonoBehaviour
+{
 
 
     [SerializeField] private float mouseSensitivity = 1f;
@@ -18,17 +17,20 @@ public class PlayerCharacterController : MonoBehaviour {
     private float characterVelocityY;
 
 
-    private void Awake() {
+    private void Awake()
+    {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Update() {
+    private void Update()
+    {
         HandleCharacterLook();
         HandleCharacterMovement();
     }
 
-    private void HandleCharacterLook() {
+    private void HandleCharacterLook()
+    {
         float lookX = Mouse.current.delta.x.value;
         float lookY = Mouse.current.delta.y.value;
 
@@ -45,29 +47,36 @@ public class PlayerCharacterController : MonoBehaviour {
         playerCamera.transform.localEulerAngles = new Vector3(cameraVerticalAngle, 0, 0);
     }
 
-    private void HandleCharacterMovement() {
+    private void HandleCharacterMovement()
+    {
         float moveX = 0;
         float moveZ = 0;
 
-        if (Keyboard.current.wKey.isPressed) {
+        if (Keyboard.current.wKey.isPressed)
+        {
             moveZ = +1f;
         }
-        if (Keyboard.current.sKey.isPressed) {
+        if (Keyboard.current.sKey.isPressed)
+        {
             moveZ = -1f;
         }
-        if (Keyboard.current.aKey.isPressed) {
+        if (Keyboard.current.aKey.isPressed)
+        {
             moveX = -1f;
         }
-        if (Keyboard.current.dKey.isPressed) {
+        if (Keyboard.current.dKey.isPressed)
+        {
             moveX = +1f;
         }
 
         Vector3 characterVelocity = transform.right * moveX * moveSpeed + transform.forward * moveZ * moveSpeed;
 
-        if (characterController.isGrounded) {
+        if (characterController.isGrounded)
+        {
             characterVelocityY = 0f;
             // Jump
-            if (IsInputJumpDown()) {
+            if (IsInputJumpDown())
+            {
                 characterVelocityY = jumpForce;
             }
         }
@@ -79,11 +88,13 @@ public class PlayerCharacterController : MonoBehaviour {
         characterController.Move(characterVelocity * Time.deltaTime);
     }
 
-    private bool IsInputJumpDown() {
+    private bool IsInputJumpDown()
+    {
         return Keyboard.current.spaceKey.wasPressedThisFrame;
     }
 
-    public void Move(Vector3 moveVector) {
+    public void Move(Vector3 moveVector)
+    {
         characterController.Move(moveVector * Time.deltaTime);
     }
 

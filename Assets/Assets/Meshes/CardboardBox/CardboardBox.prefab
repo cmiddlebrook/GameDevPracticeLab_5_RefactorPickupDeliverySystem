@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 4199572771996425476}
   - component: {fileID: 3875637826099307611}
   - component: {fileID: 5599393103766571956}
+  - component: {fileID: 1782120308951047857}
   m_Layer: 0
   m_Name: CardboardBox
   m_TagString: Untagged
@@ -204,3 +205,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.89969295, y: 0.93051046, z: 0.8732176}
   m_Center: {x: 0.004592964, y: -0.021790266, z: -0.0010023798}
+--- !u!114 &1782120308951047857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696750106460906361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921b61f2bdf485a43af5704e250d0f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Box

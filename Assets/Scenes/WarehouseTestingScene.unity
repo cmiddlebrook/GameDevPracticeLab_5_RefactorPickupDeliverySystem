@@ -4117,9 +4117,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1375649812405555930, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375649812405555930, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.168
+      objectReference: {fileID: 0}
     - target: {fileID: 3866517168185371768, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339104895875031715, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: m_Name
+      value: CarriedObjectPosition
       objectReference: {fileID: 0}
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: ui
@@ -4146,13 +4158,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1320773327}
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: _interactionUI
+      value: 
+      objectReference: {fileID: 1874934667}
+    - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: pickupUIContainer
       value: 
       objectReference: {fileID: 1874934667}
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: _boxesDeliveredText
+      value: 
+      objectReference: {fileID: 1320773327}
+    - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: dropAreaBoxCollider
       value: 
       objectReference: {fileID: 1642937457}
+    - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: _boxesDeliveredPopup
+      value: 
+      objectReference: {fileID: 7940877129440286701, guid: f7ae7028cf3b5f5468a170fab4095674, type: 3}
+    - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: _deliveryAreaCollider
+      value: 
+      objectReference: {fileID: 1642937457}
+    - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
+      propertyPath: _carriedObjectPosition
+      value: 
+      objectReference: {fileID: 1409327819}
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: boxesDeliveredTextMesh
       value: 
@@ -16586,7 +16618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1534392910}
   m_Layer: 5
-  m_Name: PlayerActionUI
+  m_Name: PlayerInteractionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20282,7 +20314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859290534}
   m_Layer: 5
-  m_Name: DeliveryUI
+  m_Name: BoxesDeliveredUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23276,6 +23308,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 59210773}
   - {fileID: 1862803280}
+  - {fileID: 638798449}
   - {fileID: 361164535}
   - {fileID: 1642937456}
   - {fileID: 891938473}
@@ -23288,4 +23321,3 @@ SceneRoots:
   - {fileID: 1587636946}
   - {fileID: 1932231938}
   - {fileID: 382230258}
-  - {fileID: 638798449}
