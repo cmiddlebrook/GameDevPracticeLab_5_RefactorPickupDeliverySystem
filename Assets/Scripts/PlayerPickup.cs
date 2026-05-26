@@ -1,10 +1,8 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerPickup : MonoBehaviour
 {
-
-
     [SerializeField] private Transform _carriedObjectPosition;
     [SerializeField] private Transform _carriedObject;
     [SerializeField] private Transform _interactionTarget;
@@ -27,8 +25,7 @@ public class PlayerPickup : MonoBehaviour
             }
 
         }
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (_carriedObject == null)
             {
