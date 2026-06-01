@@ -4165,7 +4165,7 @@ PrefabInstance:
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: _interactionUI
       value: 
-      objectReference: {fileID: 1874934667}
+      objectReference: {fileID: 1534392909}
     - target: {fileID: 6392681052418697558, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
       propertyPath: _interactionText
       value: 
@@ -4249,10 +4249,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3866517168185371768, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1075665240}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
 --- !u!4 &459807980 stripped
 Transform:
@@ -12177,24 +12174,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c27f49b4ef54ac4eb62839ffef53105, type: 3}
---- !u!1 &1075665235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3866517168185371768, guid: 2dbfd867226110544b5a34b8b07d655d, type: 3}
-  m_PrefabInstance: {fileID: 457616910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1075665240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075665235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7396142eda0ff554893362f184160bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
-  _interactionDistance: 2
 --- !u!1001 &1076540128
 PrefabInstance:
   m_ObjectHideFlags: 0
